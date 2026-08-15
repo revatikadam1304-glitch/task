@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Task 11</title>
+</head>
+
+<body>
+
+    <canvas id="myCanvas" width="500" height="300"
+        style="border:1px solid black;">
+    </canvas>
+
+    <button onclick="clearCanvas()">Clear</button>
+    <h4>Click to draw</h4>
+    <script>
+
+        let canvas = document.getElementById("myCanvas");
+        let ctx = canvas.getContext("2d");
+        let drawing = false;
+
+        canvas.addEventListener("mousedown", function () {
+            drawing = true;
+        });
+
+        canvas.addEventListener("mouseup", function () {
+            drawing = false;
+        });
+
+        canvas.addEventListener("mousemove", draw);
+
+        function draw(event) {
+
+            if (!drawing) return;
+
+            ctx.fillRect(event.offsetX, event.offsetY, 5,5);
+
+        }
+
+        function clearCanvas() {
+
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        }
+
+    </script>
+
+</body>
+
+</html>
